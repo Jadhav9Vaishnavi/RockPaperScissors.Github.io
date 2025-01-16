@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+
+        #d1{
+            display: flex;
+            justify-content: center;
+        }
+
+        #d1 div{
+            margin: 5% 5% 0% 5%;
+        }
+
+        img{
+            height: 150px;
+            width: 150px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        img:hover{
+            box-shadow: 2px 2px 2px black,
+                        -2px 2px 2px black,
+                        2px -2px 2px black,
+                        -2px -2px 2px black;
+        }
+
+        h4{
+            margin-left: 35%;
+            color: rgb(202, 8, 8);
+            font-size: 20px;
+        }
+
+        #d2{
+            text-align: center;
+            margin-top: 3%;
+            color: rgb(9, 9, 138);
+        }
+
+        #heading{
+            height: 50px;
+            width: 100%;
+            background-color: rgb(40, 5, 73);
+            color: white;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        #d4{
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 20px;
+            color: rgb(155, 13, 79);
+            font-weight: bold;
+            margin-top: 3%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="heading">ROCK PAPER SCISSOR GAME</div>
+    <div id="d1">
+        <div>
+            <img src="Images/rock.webp" alt="rock" id="rock" value="rock">
+            <h4>Rock</h4>
+        </div>
+        <div>
+            <img src="Images/paper.webp" alt="paper" id="paper"> 
+            <h4>Paper</h4>
+        </div>
+        <div>
+            <img src="Images/scissor.webp" alt="scissor" id="scissor">
+            <h4>Scissors</h4>
+        </div>
+    </div>
+    <div id="d4">
+        <div id="user">USER</div>
+        <div id="comp">COMPUTER</div>
+    </div>
+    <div id="d2"></div>
+    <div id="d3" style="color: white; width: 30%; text-align: center; margin-left: 35%;"></div>
+
+    <script>
+        var rock=document.getElementById("rock");
+        var paper=document.getElementById("paper");
+        var scissor=document.getElementById("scissor");
+        rock.addEventListener("click",funClick);
+        paper.addEventListener("click",funClick);
+        scissor.addEventListener("click",funClick);
+        var d2=document.getElementById("d2");
+        var d3=document.getElementById("d3");
+        var user=document.getElementById("user");
+        var computer=document.getElementById("comp");
+
+        var arr=['rock','paper','scissor'];
+        var userCount=1;
+        var compCount=1;
+
+        function funClick(event){
+            var userChoice=event.currentTarget.id;
+            console.log("User choice="+userChoice);
+
+            var comp=Math.floor(Math.random() * 3);
+            var compChoice=arr[comp];
+            console.log("computer choice="+compChoice);
+
+            if(userChoice=="rock" && compChoice=="scissor"){
+                console.log("User won the game");
+                //console.log(userCount++);
+                user.innerHTML="USER:"+userCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU WIN</h2>";
+                d3.style.backgroundColor="green";
+            } else if (userChoice=="rock" && compChoice=="paper"){
+                console.log("Computer won the game");
+                //console.log(compCount++);
+                computer.innerHTML="COMPUTER:"+compCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU LOST</h2>";
+                d3.style.backgroundColor="red";
+            } else if(userChoice=="scissor" && compChoice=="rock"){
+                console.log("Computer won the game");
+                //console.log(compCount++);
+                computer.innerHTML="COMPUTER:"+compCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU LOST</h2>";
+                d3.style.backgroundColor="red";
+            } else if(userChoice=="scissor" && compChoice=="paper"){
+                console.log("User won the game");
+                //console.log(userCount++);
+                user.innerHTML="USER:"+userCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU WIN<h2>";
+                d3.style.backgroundColor="green";
+            } else if(userChoice=="paper" && compChoice=="rock"){
+                console.log("User won the game");
+                //console.log(userCount++);
+                user.innerHTML="USER:"+userCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU WIN</h2>";
+                d3.style.backgroundColor="green";
+            } else if(userChoice=="paper" && compChoice=="scissor"){
+                console.log("Computer won the game");
+                //console.log(compCount++);
+                computer.innerHTML="COMPUTER:"+compCount++;
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>YOU LOST</h2>";
+                d3.style.backgroundColor="red";
+            } else if(userChoice==compChoice){
+                console.log("Game draw!!");
+                d2.innerHTML="<h3>Your Choice is "+userChoice+"<br>Computer Choice is "+compChoice+"</h3>";
+                d3.innerHTML="<h2>Game Draw!!</h2>";
+                d3.style.backgroundColor="darkorange";
+            }
+        }
+    </script>
+</body>
+</html>
